@@ -1,0 +1,430 @@
+:root {
+  --yellow: #ffd400;
+  --yellow-dark: #e6bf00;
+  --bg: #f5f5f7;
+  --sidebar: #1a1a1a;
+  --text: #111;
+  --muted: #666;
+  --white: #fff;
+  --border: #e8e8e8;
+  --danger: #e53935;
+  --success: #2e7d32;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--sidebar);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--yellow);
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  color: #ddd;
+  font-weight: 500;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background: rgba(255, 212, 0, 0.15);
+  color: var(--yellow);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.btn-logout {
+  width: 100%;
+  border: none;
+  background: var(--yellow);
+  color: #000;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.main {
+  flex: 1;
+  padding: 28px;
+  overflow: auto;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.card p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.panel {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge.approved {
+  background: #d4edda;
+  color: var(--success);
+}
+
+.badge.rejected {
+  background: #f8d7da;
+  color: var(--danger);
+}
+
+.badge.blocked {
+  background: #212121;
+  color: #fff;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: #000;
+}
+
+.btn-sm {
+  padding: 6px 10px;
+  margin-right: 6px;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--yellow) 0%, #fff 60%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.login-card h1 {
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.login-card p {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+}
+
+.price-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.price-form input {
+  width: 140px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.link {
+  color: #1565c0;
+  font-weight: 600;
+}
+
+.settings-form {
+  max-width: 560px;
+}
+
+.section-heading {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 28px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--yellow);
+}
+
+.section-heading:first-of-type {
+  margin-top: 0;
+}
+
+.support-field {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.visible-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.visible-toggle input {
+  width: auto;
+}
+
+.settings-form .field {
+  margin-bottom: 24px;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 4px 0 8px;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 28px;
+  transition: 0.3s;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--yellow);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+.success-msg {
+  color: var(--success);
+  font-size: 14px;
+}
+
+.btn-danger {
+  background: #ffebee;
+  color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: #ffcdd2;
+}
+
+.user-blocked td {
+  opacity: 0.6;
+}
+
+.datatable-wrap {
+  overflow-x: auto;
+}
+
+.datatable-wrap .dataTables_wrapper {
+  font-size: 14px;
+}
+
+.datatable-wrap table.dataTable thead th {
+  background: #fafafa;
+  font-weight: 600;
+  padding: 12px 10px;
+}
+
+.datatable-wrap table.dataTable tbody td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.datatable-wrap .dataTables_filter input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-left: 8px;
+}
+
+.datatable-wrap .dataTables_length select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.datatable-wrap .dataTables_paginate .paginate_button {
+  border-radius: 6px !important;
+  margin: 0 2px;
+}
+
+.datatable-wrap .dataTables_paginate .paginate_button.current {
+  background: var(--yellow) !important;
+  border-color: var(--yellow) !important;
+  color: #000 !important;
+}
