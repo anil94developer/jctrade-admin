@@ -25,6 +25,9 @@ export default function Layout() {
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
             Transactions
           </NavLink>
+          <NavLink to="/referrals" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Referrals
+          </NavLink>
           <NavLink to="/settings" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
             Settings
           </NavLink>

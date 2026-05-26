@@ -6,6 +6,7 @@ import Users from './pages/Users';
 import UserDetail from './pages/UserDetail';
 import Transactions from './pages/Transactions';
 import Settings from './pages/Settings';
+import Referrals from './pages/Referrals';
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('adminToken');
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="users/:id" element={<UserDetail />} />
         <Route path="transactions" element={<Transactions />} />
         <Route path="settings" element={<Settings />} />
+        <Route path="referrals" element={<Referrals />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
