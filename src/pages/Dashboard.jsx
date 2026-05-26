@@ -52,6 +52,16 @@ export default function Dashboard() {
       </div>
 
       <div className="panel" style={{ marginBottom: 24 }}>
+        <h2 style={{ marginTop: 0 }}>Home page banners</h2>
+        <p style={{ margin: '0 0 12px', fontSize: 14, color: '#666' }}>
+          Upload sliding promo images shown on the mobile app home screen.
+        </p>
+        <Link to="/banners" className="btn btn-primary" style={{ display: 'inline-block', textDecoration: 'none' }}>
+          Manage Home Banners →
+        </Link>
+      </div>
+
+      <div className="panel" style={{ marginBottom: 24 }}>
         <h2 style={{ marginTop: 0 }}>Quick: USDT Price</h2>
         <form className="price-form" onSubmit={savePrice}>
           <input type="number" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} />
