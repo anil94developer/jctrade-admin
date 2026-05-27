@@ -18,7 +18,13 @@ function getToken() {
  * @param {number} [props.pageLength]
  * @param {Array<[number, string]>} [props.defaultOrder] - e.g. [[7, 'desc']]
  */
-export default function ServerDataTable({ endpoint, columns, pageLength = 10, defaultOrder = [[0, 'desc']] }) {
+export default function ServerDataTable({
+  endpoint,
+  columns,
+  pageLength = 10,
+  defaultOrder = [[0, 'desc']],
+  tableId,
+}) {
   const tableRef = useRef(null);
   const dtRef = useRef(null);
 
@@ -76,7 +82,7 @@ export default function ServerDataTable({ endpoint, columns, pageLength = 10, de
 
   return (
     <div className="datatable-wrap">
-      <table ref={tableRef} className="display stripe" style={{ width: '100%' }}>
+      <table id={tableId} ref={tableRef} className="display stripe" style={{ width: '100%' }}>
         <thead>
           <tr>
             {columns.map((c) => (

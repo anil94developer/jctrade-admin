@@ -73,6 +73,7 @@ export default function UserDetail() {
             <tr>
               <th>Hash</th>
               <th>Name</th>
+              <th>Phone</th>
               <th>Value</th>
               <th>UPI</th>
               <th>Status</th>
@@ -84,6 +85,7 @@ export default function UserDetail() {
               <tr key={tx._id}>
                 <td>{tx.transactionHash}</td>
                 <td>{tx.name}</td>
+                <td>{tx.phone || '-'}</td>
                 <td>₹{tx.value}</td>
                 <td>{tx.upiId}</td>
                 <td>

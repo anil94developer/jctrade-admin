@@ -84,6 +84,7 @@ export default function Dashboard() {
             <tr>
               <th>User</th>
               <th>Hash</th>
+              <th>Phone</th>
               <th>Value</th>
               <th>UPI</th>
               <th>Status</th>
@@ -96,6 +97,7 @@ export default function Dashboard() {
                 <td style={{ maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {tx.transactionHash}
                 </td>
+                <td>{tx.phone || '-'}</td>
                 <td>₹{tx.value}</td>
                 <td>{tx.upiId}</td>
                 <td>
