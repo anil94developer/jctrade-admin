@@ -29,7 +29,10 @@ export default function ServerDataTable({
   const dtRef = useRef(null);
 
   useEffect(() => {
-    if (!tableRef.current) return;
+    if (!tableRef.current || !endpoint) {
+      console.error('ServerDataTable: missing endpoint prop');
+      return;
+    }
 
     const token = getToken();
     dtRef.current = new DataTable(tableRef.current, {
@@ -47,6 +50,13 @@ export default function ServerDataTable({
         dataSrc: 'data',
         error(xhr) {
           console.error('DataTable load error', xhr.status, xhr.responseText);
+          const msg =
+            xhr.status === 401
+              ? 'Session expired — log in again'
+              : xhr.status === 404
+                ? 'API not found — deploy latest server with buy routes'
+                : `Failed to load (${xhr.status || 'network'})`;
+          alert(msg);
         },
       },
       columns: columns.map((col) => ({

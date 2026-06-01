@@ -4,6 +4,7 @@ import { api } from '../api';
 const emptyForm = {
   walletAddress: '',
   usdtPrice: '',
+  buyUsdtPrice: '',
   binancePrice: '',
   maintenanceMode: false,
   referralReward: '',
@@ -18,6 +19,12 @@ const emptyForm = {
   supportWhatsappVisible: true,
   paymentQrVisible: true,
   paymentQrImage: '',
+  buyPaymentModes: 'both',
+  buyCdmBankName: '',
+  buyCdmAccountNumber: '',
+  buyCdmIfsc: '',
+  buyCdmAccountHolder: '',
+  buyCdmInstructions: '',
 };
 
 export default function Settings() {
@@ -32,6 +39,7 @@ export default function Settings() {
         setForm({
           walletAddress: d.walletAddress || '',
           usdtPrice: String(d.usdtPrice ?? ''),
+          buyUsdtPrice: String(d.buyUsdtPrice ?? d.usdtPrice ?? ''),
           binancePrice: String(d.binancePrice ?? ''),
           maintenanceMode: Boolean(d.maintenanceMode),
           referralReward: String(d.referralReward ?? ''),
@@ -46,6 +54,12 @@ export default function Settings() {
           supportWhatsappVisible: d.supportWhatsappVisible !== false,
           paymentQrVisible: d.paymentQrVisible !== false,
           paymentQrImage: d.paymentQrImage || '',
+          buyPaymentModes: d.buyPaymentModes || 'both',
+          buyCdmBankName: d.buyCdmBankName || '',
+          buyCdmAccountNumber: d.buyCdmAccountNumber || '',
+          buyCdmIfsc: d.buyCdmIfsc || '',
+          buyCdmAccountHolder: d.buyCdmAccountHolder || '',
+          buyCdmInstructions: d.buyCdmInstructions || '',
         })
       )
       .catch(console.error);
@@ -139,6 +153,7 @@ export default function Settings() {
         body: JSON.stringify({
           walletAddress: form.walletAddress,
           usdtPrice: Number(form.usdtPrice),
+          buyUsdtPrice: Number(form.buyUsdtPrice),
           binancePrice: Number(form.binancePrice),
           maintenanceMode: form.maintenanceMode,
           referralReward: Number(form.referralReward),
@@ -153,6 +168,12 @@ export default function Settings() {
           supportWhatsappVisible: form.supportWhatsappVisible,
           paymentQrVisible: form.paymentQrVisible,
           ...(form.paymentQrImage ? { paymentQrImage: form.paymentQrImage } : {}),
+          buyPaymentModes: form.buyPaymentModes,
+          buyCdmBankName: form.buyCdmBankName,
+          buyCdmAccountNumber: form.buyCdmAccountNumber,
+          buyCdmIfsc: form.buyCdmIfsc,
+          buyCdmAccountHolder: form.buyCdmAccountHolder,
+          buyCdmInstructions: form.buyCdmInstructions,
         }),
       });
       setMsg('Settings saved successfully');
@@ -184,7 +205,7 @@ export default function Settings() {
 
         <div className="field-row">
           <div className="field">
-            <label>Platform USDT Price (INR)</label>
+            <label>Sell USDT price (INR) — users sell to you</label>
             <input
               type="number"
               step="0.01"
@@ -194,14 +215,25 @@ export default function Settings() {
             />
           </div>
           <div className="field">
-            <label>Binance Price (INR)</label>
+            <label>Buy USDT price (INR) — users buy from you</label>
             <input
               type="number"
               step="0.01"
-              value={form.binancePrice}
-              onChange={(e) => update('binancePrice', e.target.value)}
+              value={form.buyUsdtPrice}
+              onChange={(e) => update('buyUsdtPrice', e.target.value)}
+              required
             />
           </div>
+        </div>
+
+        <div className="field">
+          <label>Binance reference price (INR)</label>
+          <input
+            type="number"
+            step="0.01"
+            value={form.binancePrice}
+            onChange={(e) => update('binancePrice', e.target.value)}
+          />
         </div>
 
         <div className="field row-between">
@@ -217,6 +249,61 @@ export default function Settings() {
             />
             <span className="slider" />
           </label>
+        </div>
+
+        <h2 className="section-heading">Buy USDT — payment methods</h2>
+        <p className="field-hint" style={{ marginBottom: 12 }}>
+          Control what users see on the Buy page. UPI slots are managed under Payment UPIs.
+        </p>
+        <div className="field">
+          <label>Allowed buy payment options</label>
+          <select value={form.buyPaymentModes} onChange={(e) => update('buyPaymentModes', e.target.value)}>
+            <option value="both">UPI + CDM (user chooses)</option>
+            <option value="upi">UPI only</option>
+            <option value="cdm">CDM only</option>
+          </select>
+        </div>
+        <div className="field-row">
+          <div className="field">
+            <label>CDM bank name</label>
+            <input
+              type="text"
+              value={form.buyCdmBankName}
+              onChange={(e) => update('buyCdmBankName', e.target.value)}
+              placeholder="e.g. HDFC Bank"
+            />
+          </div>
+          <div className="field">
+            <label>Account holder name</label>
+            <input
+              type="text"
+              value={form.buyCdmAccountHolder}
+              onChange={(e) => update('buyCdmAccountHolder', e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="field-row">
+          <div className="field">
+            <label>Account number</label>
+            <input
+              type="text"
+              value={form.buyCdmAccountNumber}
+              onChange={(e) => update('buyCdmAccountNumber', e.target.value)}
+            />
+          </div>
+          <div className="field">
+            <label>IFSC</label>
+            <input type="text" value={form.buyCdmIfsc} onChange={(e) => update('buyCdmIfsc', e.target.value)} />
+          </div>
+        </div>
+        <div className="field">
+          <label>CDM instructions (shown to user)</label>
+          <textarea
+            rows={3}
+            value={form.buyCdmInstructions}
+            onChange={(e) => update('buyCdmInstructions', e.target.value)}
+            placeholder="How to deposit via CDM..."
+          />
         </div>
 
         <h2 className="section-heading">Payment QR (UPI tab)</h2>

@@ -8,6 +8,8 @@ import Transactions from './pages/Transactions';
 import Settings from './pages/Settings';
 import Referrals from './pages/Referrals';
 import Banners from './pages/Banners';
+import PaymentUpis from './pages/PaymentUpis';
+import BuyOrders from './pages/BuyOrders';
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('adminToken');
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="users" element={<Users />} />
         <Route path="users/:id" element={<UserDetail />} />
         <Route path="transactions" element={<Transactions />} />
+        <Route path="buy-orders" element={<BuyOrders />} />
+        <Route path="payment-upis" element={<PaymentUpis />} />
         <Route path="settings" element={<Settings />} />
         <Route path="referrals" element={<Referrals />} />
         <Route path="banners" element={<Banners />} />

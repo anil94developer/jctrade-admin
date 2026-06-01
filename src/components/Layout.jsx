@@ -44,7 +44,13 @@ export default function Layout() {
           <NavLink
             to="/transactions"
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            Transactions
+            Sell Orders
+          </NavLink>
+          <NavLink to="/buy-orders" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Buy USDT
+          </NavLink>
+          <NavLink to="/payment-upis" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Payment UPIs
           </NavLink>
           <NavLink to="/referrals" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
             Referrals
